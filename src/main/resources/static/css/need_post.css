@@ -1,0 +1,109 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+input, textarea, button {
+    font-family: inherit;
+}
+
+/* .container styles removed as per request */
+
+.left-half, .right-half {
+    flex: 1; /* Each takes half the space */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.left-half {
+    /* border-right: 1px solid #eee; */ /* Removed as container is gone */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-upload-area {
+    width: 90%;
+    height: 70%;
+    border: 2px dashed #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.image-upload-button {
+    margin-top: 10px;
+    padding: 15px 30px; /* Increased padding */
+    background-color: #5271FF;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1.1em; /* Increased font size */
+}
+
+.right-half {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.2em; /* Increased font size for the right half */
+}
+
+.form-group {
+    margin-bottom: 100px; /* Increased margin-bottom */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #5271FF; /* Changed font color */
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.radio-group input[type="radio"] {
+    margin-right: 5px;
+}
+
+.radio-group label {
+    display: inline-block;
+    margin-right: 15px;
+    font-weight: normal;
+}
+
+/* Add style for the new divider */
+.navbar-divider {
+    height: 1px;
+    background-color: #ccc; /* Changed to gray */
+    width: 100%;
+    margin-top: 20px; /* Added 20px top margin */
+}
+
+.content-wrapper {
+    display: flex;
+    width: 80%; /* Adjust as needed */
+    margin: 50px auto;
+    min-height: 600px; /* Adjust as needed */
+    gap: 200px; /* Added gap between left and right halves */
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical; /* Allow vertical resizing */
+    font-size: 1em; /* Inherit or set a base font size */
+}

@@ -1,0 +1,37 @@
+body {
+    background-image: url('/img/main_back.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+#image-buttons-container {
+    position: absolute;
+    top: 180px;
+    left: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 41px;
+}
+
+.image-button {
+    cursor: pointer;
+    width: 480px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.image-button:hover {
+    transform: scale(1.05);
+}
+
+#startButton {
+    cursor: pointer;
+    position: absolute;
+    top: 650px;
+    left: 1000px;
+    transition: transform 0.2s ease-in-out;
+}
+
+#startButton:hover {
+    transform: scale(1.1);
+}

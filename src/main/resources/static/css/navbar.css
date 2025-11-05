@@ -1,0 +1,94 @@
+.navbar {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 50px;
+}
+
+/* li 전체 높이 고정 + 가운데 정렬 */
+.navbar ul li {
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+/* a도 flex로 가운데 정렬하고 높이 맞추기 */
+.navbar ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+/* 로그인/게시 버튼이 있는 li만 왼쪽 여백 추가 */
+.navbar ul li.action-item {
+    margin-left: 40px;
+}
+
+/* active 클래스가 있을 때 색상 변경 */
+.navbar ul li a.active {
+    color: #5271FF;
+    font-weight: bold;
+}
+
+/* 이미지가 주변 요소를 밀지 않도록 */
+.navbar ul li a img {
+    vertical-align: middle;
+}
+
+.navbar ul li a:hover {
+    opacity: 0.7;
+}
+
+.navbar .logo {
+    margin-left: 10px;
+}
+
+.search-container {
+    position: relative;
+    margin-left: 100px;
+    margin-right: 150px;
+}
+
+.search-icon {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    z-index: 1;
+}
+
+.search-input {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+    padding: 5px 5px 5px 30px;
+    width: 400px;
+    font-size: 1.1em;
+}
+
+/* 게시 버튼 스타일 */
+.navbar ul li a.post-button {
+    background-color: #5271FF;
+    border-radius: 25px;
+    color: white !important;
+    padding: 8px 45px;
+    text-decoration: none;
+    margin-left: 80px;
+}
+
+.navbar ul li a.post-button:hover {
+    opacity: 0.9;
+}
