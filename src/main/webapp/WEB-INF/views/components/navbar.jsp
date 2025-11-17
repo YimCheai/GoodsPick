@@ -1,15 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<head>
-    <link rel="stylesheet" href="/css/navbar.css">
-</head>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <nav class="navbar">
     <!-- Logo -->
     <c:set var="currentPath" value="${pageContext.request.requestURI}" />
 
     <a href="${pageContext.request.contextPath}/" class="logo">
         <c:choose>
-            <c:when test="${currentPath.contains('/need') or currentPath.contains('/provide')}">
+            <c:when test="${currentPath.contains('/need') or currentPath.contains('/provide') or currentPath.contains('/mypage')}">
                 <img src="${pageContext.request.contextPath}/img/logo_gray.svg" alt="Logo" />
             </c:when>
             <c:otherwise>
@@ -28,23 +26,65 @@
     <ul>
         <li>
             <a href="${pageContext.request.contextPath}/need"
-               class="${currentPath.contains('/need') and not currentPath.contains('_post') ? 'active' : ''}">구해요</a>
+               class="${currentPath.contains('/need') ? 'active' : ''}">구해요</a>
         </li>
         <li>
             <a href="${pageContext.request.contextPath}/provide"
-               class="${currentPath.contains('/provide') and not currentPath.contains('_post') ? 'active' : ''}">해드려요</a>
+               class="${currentPath.contains('/provide') ? 'active' : ''}">해드려요</a>
         </li>
-        <li class="action-item">
-            <c:choose>
-                <c:when test="${currentPath.contains('/need_post') or currentPath.contains('/provide_post')}">
-                    <a href="/" class="post-button">게시</a>
-                </c:when>
-                <c:otherwise>
+        <li><a href="${pageContext.request.contextPath}/message">메시지</a></li>
+        <c:choose>
+            <c:when test="${not empty sessionScope.loginUser}">
+                <li>
+                    <c:choose>
+                        <c:when test="${fn:endsWith(pageContext.request.servletPath, '/mypage.jsp')}">
+                            <button type="button" class="mypage-button" onclick="location.href='${pageContext.request.contextPath}/logout'">로그아웃</button>
+                        </c:when>
+                        <c:otherwise>
+                            <button type="button" class="mypage-button" onclick="location.href='${pageContext.request.contextPath}/mypage'">마이페이지</button>
+                        </c:otherwise>
+                    </c:choose>
+                </li>
+            </c:when>
+            <c:otherwise>
+                <li class="action-item">
                     <a href="${pageContext.request.contextPath}/login">
                         <img src="${pageContext.request.contextPath}/img/login.svg" alt="Login" />
                     </a>
-                </c:otherwise>
-            </c:choose>
-        </li>
+                </li>
+            </c:otherwise>
+        </c:choose>
     </ul>
 </nav>
+
+<script>
+    const searchInput = document.querySelector('.search-input');
+    const currentPath = window.location.pathname;
+
+    searchInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            const query = searchInput.value.trim();
+            if (query) {
+                let redirectPath = '';
+                if (currentPath.startsWith('${pageContext.request.contextPath}/need')) {
+                    redirectPath = '${pageContext.request.contextPath}/need';
+                } else if (currentPath.startsWith('${pageContext.request.contextPath}/provide')) {
+                    redirectPath = '${pageContext.request.contextPath}/provide';
+                }
+
+                if (redirectPath) {
+                    window.location.href = redirectPath + '?query=' + encodeURIComponent(query);
+                }
+            }
+        }
+    });
+
+    // Retain search query in input field
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('query');
+        if (query) {
+            searchInput.value = query;
+        }
+    });
+</script>

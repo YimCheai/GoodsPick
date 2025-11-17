@@ -2,34 +2,58 @@
 .item-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 80px; /* Changed gap to 80px */
-    justify-content: flex-start;
-    width: 1440px; /* (300px * 4) + (80px * 3) */ /* Adjusted width for 4 items with 80px gap */
+    gap: 80px;
+    justify-content: flex-start; /* Changed from flex-start to center */
+    max-width: 1650px; /* Added max-width to allow centering */
     margin: 100px auto 0; /* Center horizontally and add 100px top margin */
 }
 .item {
     cursor: pointer;
-    width: 300px;
-    height: 400px;
+    width: 350px;
+    height: 450px;
     border: 1px solid #ccc;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     padding: 10px;
     box-sizing: border-box;
+    overflow: hidden;
 }
 .item img {
     width: 100%;
-    height: 80%;
+    height: 320px; /* Changed to fixed height */
     object-fit: cover;
 }
 .item p {
     margin-top: 10px;
     margin-bottom: 0; /* Reduce space below p */
+    font-size: 1.4em; /* Increased font size for goods name */
+    font-weight: bold; /* Made goods name bold */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* padding-right is now managed by .item-details */
 }
 .item h3 {
     margin-top: 5px; /* Small margin to separate from p, adjust as needed */
     margin-bottom: 0; /* Remove default bottom margin */
-    font-size: 1.5em; /* Increase font size, adjust as needed */
-    color: #333; /* Example color, can be adjusted */
+    font-size: 1em; /* Decreased font size for goods description */
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* padding-right is now managed by .item-details */
+}
+
+.item-details {
+    width: 80%; /* 80% of parent .item's width */
+    margin: 20px auto 0 auto; /* Center horizontally, 10px from top */
+    box-sizing: border-box;
+    text-align: left; /* Changed from center to left */
+}
+
+.item-link {
+    text-decoration: none;
+    display: block;
+    color: inherit; /* Inherit color from parent for text inside */
 }

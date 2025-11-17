@@ -35,6 +35,11 @@ input, textarea, button {
     margin-bottom: 20px;
 }
 
+.image-upload-area.highlight {
+    border-color: #5271FF;
+    background-color: #f0f3ff;
+}
+
 .image-upload-button {
     margin-top: 10px;
     padding: 15px 30px; /* Increased padding */
@@ -67,9 +72,21 @@ input, textarea, button {
 .form-group input[type="text"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: none;
+    border-bottom: 2px solid #5271FF; /* Blue bottom border */
     box-sizing: border-box;
+    outline: none; /* Remove outline on focus */
+    font-size: 1.2em; /* Increased font size */
+}
+
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #5271FF; /* Blue bottom border */
+    box-sizing: border-box;
+    outline: none; /* Remove outline on focus */
+    font-size: 1.2em; /* Increased font size */
 }
 
 .radio-group input[type="radio"] {
@@ -101,9 +118,25 @@ input, textarea, button {
 .form-group textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    border: none;
+    border-bottom: 2px solid #5271FF; /* Blue bottom border */
     box-sizing: border-box;
-    resize: vertical; /* Allow vertical resizing */
-    font-size: 1em; /* Inherit or set a base font size */
+    outline: none; /* Remove outline on focus */
+    overflow-y: hidden; /* Hide scrollbar for auto-resizing */
+    resize: none; /* Prevent manual resizing */
+    font-size: 1.2em; /* Increased font size */
+}
+
+.post-button {
+    background-color: #5271FF;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 15px 30px; /* Increased vertical height */
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
 }

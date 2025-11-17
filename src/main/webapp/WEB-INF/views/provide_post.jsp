@@ -1,14 +1,14 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <head>
-    <title>굿즈 등록</title>
-    <link rel="stylesheet" href="/css/need_post.css?v=1.1">
+    <title>굿즈 제공</title>
+    <link rel="stylesheet" href="/css/need_post.css?v=1.1"> <%-- Reusing existing CSS --%>
     <link rel="stylesheet" href="/css/navbar.css">
 </head>
 <body>
     <%@ include file="components/navbar.jsp" %>
     <div class="navbar-divider"></div> <!-- Added divider -->
 
-    <form action="/need_post" method="post" enctype="multipart/form-data">
+    <form action="/provide_post" method="post" enctype="multipart/form-data">
     <div class="content-wrapper"> <!-- New wrapper for left/right halves -->
         <div class="left-half">
             <div class="image-upload-area">
@@ -25,6 +25,10 @@
             <div class="form-group">
                 <label for="goodsDescription">굿즈 설명</label>
                 <textarea id="goodsDescription" name="goodsDescription" placeholder="굿즈 설명을 입력하세요" rows="1"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="price">가격</label>
+                <input type="number" id="price" name="price" placeholder="가격을 입력하세요" step="0.01" min="0">
             </div>
             <div class="form-group">
                 <label>현장 거래</label>

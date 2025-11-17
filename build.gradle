@@ -27,10 +27,7 @@ repositories {
 dependencies {
 	// Spring Boot 기본
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-
-	// DB 연결 (MySQL)
-	runtimeOnly 'com.mysql:mysql-connector-j'
+	implementation 'org.springframework.boot:spring-boot-starter-data-mongodb'
 
 	// JSP 관련
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
@@ -49,6 +46,6 @@ dependencies {
 	
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
-}
+// tasks.named('test') {
+// 	useJUnitPlatform()
+// }
