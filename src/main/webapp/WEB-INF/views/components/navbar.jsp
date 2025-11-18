@@ -32,7 +32,10 @@
             <a href="${pageContext.request.contextPath}/provide"
                class="${currentPath.contains('/provide') ? 'active' : ''}">해드려요</a>
         </li>
-        <li><a href="${pageContext.request.contextPath}/message">메시지</a></li>
+        <li>
+            <a href="${pageContext.request.contextPath}/chat"
+               class="${currentPath.contains('/chat') ? 'active' : ''}">메시지</a>
+        </li>
         <c:choose>
             <c:when test="${not empty sessionScope.loginUser}">
                 <li>

@@ -381,4 +381,10 @@ public class HomeController {
         
         return "redirect:/provide/" + id;
     }
+
+    @GetMapping("/chat")
+    public String chatPage() {
+        return "chat";  // /WEB-INF/views/chat.jsp
+    }
+
 }
