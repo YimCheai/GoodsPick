@@ -36,7 +36,7 @@
         .date-box { position: absolute; top: calc(21px + 25px + 50px + 1px + 30px); left: 600px; width: 114px; height: 33px; background-color: rgba(0, 0, 0, 0.3); border-radius: 100px; display: flex; align-items: center; justify-content: center; font-family: 'Pretendard', sans-serif; font-weight: 400; font-size: 12px; color: #FFFFFF; }
         .chat-title { position: absolute; top: 160px; left: 55px; font-family: 'Pretendard', sans-serif; font-weight: 600; font-size: 30px; color: #000000; }
         .chat-svg { position: absolute; top: calc(164px + 22px + 20px); left: 47px; }
-        .chat-list-container { position: absolute; top: calc(164px + 22px + 20px + 130px); left: 47px; width: 400px; height: 600px; overflow-y: auto; }
+        .chat-list-container { position: absolute; top: calc(164px + 22px + 20px + 130px); left: 47px; width: 385px; height: 600px; overflow-y: auto; }
         .chat-list-item { display: flex; align-items: center; padding: 15px 10px; cursor: pointer; border-bottom: 1px solid rgba(0, 0, 0, 0.1); position: relative; }
         .chat-list-item:hover { background-color: rgba(0, 0, 0, 0.05); }
         .chat-list-item.active { background-color: rgba(82, 113, 255, 0.1); }
@@ -53,7 +53,7 @@
 <body>
 <div class="chat-container">
     <div class="chat-box">
-        <img src="/img/chatbox_profile.svg" alt="Profile" class="chatbox-profile">
+        <img src="/img/chat-profile.svg" alt="Profile" class="chatbox-profile">
 
         <div class="chat-partner-name" id="chatPartnerName">채팅 상대를 선택하세요</div>
 
@@ -139,7 +139,7 @@
 
                 // HTML 생성 시에도 JS 변수는 문자열 합치기로 처리
                 let htmlContent =
-                    '<img src="/img/chatbox_profile.svg" alt="Profile" class="chat-list-profile">' +
+                    '<img src="/img/chat-profile.svg" alt="Profile" class="chat-list-profile">' +
                     '<div class="chat-list-info">' +
                     '<div class="chat-list-name">' + otherUserId + '</div>' +
                     '<div class="chat-list-preview">' + (room.lastMessage || '대화를 시작하세요') + '</div>' +
