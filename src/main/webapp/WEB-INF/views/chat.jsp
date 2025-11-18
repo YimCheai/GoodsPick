@@ -83,7 +83,6 @@
 <script>
     // 중요: JSP 파일이므로 서버에서 해석해야 할 변수만 EL 표현식으로 감쌉니다.
     // 'loginUser' 객체 안의 'id'와 'username'을 꺼내옵니다.
-    // (User 엔티티의 필드명이 id, username 이라고 가정)
     const currentUserId = '${sessionScope.loginUser.id}';
     const currentUserName = '${sessionScope.loginUser.username}';
 
@@ -376,7 +375,9 @@
     });
 
     // 페이지 로드 시 초기화
-    window.onload = function() {
+    window.onload = async function() {
+        console.log('currentUserId:', currentUserId); // 디버깅용
+
         if (!currentUserId) {
             alert('로그인이 필요합니다.');
             window.location.href = '/login';
@@ -386,10 +387,42 @@
         updateDate();
         connectWebSocket();
 
-        // WebSocket 연결 후 채팅 목록 로드
-        setTimeout(() => {
-            loadChatList();
-        }, 1000);
+        // URL에서 partnerId 파라미터 확인
+        const urlParams = new URLSearchParams(window.location.search);
+        const partnerId = urlParams.get('partnerId');
+
+        console.log('partnerId from URL:', partnerId); // 디버깅용
+
+        if (partnerId && partnerId !== currentUserId) {
+            try {
+                console.log('채팅방 생성 시도...'); // 디버깅용
+
+                const response = await fetch('/api/chat/room?myId=' + currentUserId + '&partnerId=' + partnerId, {
+                    method: 'POST'
+                });
+
+                if (response.ok) {
+                    const room = await response.json();
+                    console.log('채팅방 생성 완료:', room); // 디버깅용
+
+                    await loadChatList();
+
+                    setTimeout(() => {
+                        selectChatRoom(room.id, partnerId);
+                    }, 100);
+                } else {
+                    console.error("채팅방 생성 실패:", response.status);
+                    await loadChatList();
+                }
+            } catch (e) {
+                console.error("채팅방 연결 중 오류:", e);
+                await loadChatList();
+            }
+        } else {
+            setTimeout(() => {
+                loadChatList();
+            }, 500);
+        }
     };
 
     // 페이지 종료 시 연결 해제

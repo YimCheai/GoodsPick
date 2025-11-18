@@ -1,18 +1,16 @@
 package com.example.goodspick.controller;
 
-import  com.example.goodspick.dto.ChatMessageDTO;
-import  com.example.goodspick.entity.ChatRoom;
+import com.example.goodspick.dto.ChatMessageDTO;
+import com.example.goodspick.entity.ChatRoom;
 import com.example.goodspick.entity.Message;
 import com.example.goodspick.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -25,11 +23,12 @@ public class ChatController {
     // WebSocket 메시지 처리
     @MessageMapping("/chat/{chatRoomId}")
     public void sendMessage(@DestinationVariable String chatRoomId, ChatMessageDTO messageDTO) {
-        // 메시지 저장
-        Message.MessageType type = messageDTO.getType().equals("IMAGE")
+        // 메시지 타입 결정
+        Message.MessageType type = "IMAGE".equals(messageDTO.getType())
                 ? Message.MessageType.IMAGE
                 : Message.MessageType.TEXT;
 
+        // 메시지 저장
         Message savedMessage = chatService.saveMessage(
                 chatRoomId,
                 messageDTO.getSenderId(),
@@ -39,7 +38,7 @@ public class ChatController {
                 type
         );
 
-        // 메시지를 해당 채팅방 구독자들에게 전송
+        // 메시지를 해당 채팅방 구독자들에게 전송 (시간 정보 포함)
         messageDTO.setTimestamp(savedMessage.getTimestamp());
         messagingTemplate.convertAndSend("/topic/chat/" + chatRoomId, messageDTO);
     }
@@ -51,11 +50,13 @@ public class ChatController {
         return chatService.getUserChatRooms(userId);
     }
 
-    // REST API: 채팅방 생성 또는 가져오기
+    // [수정됨] REST API: 채팅방 생성 또는 가져오기 (중복 제거 및 파라미터 통일)
     @PostMapping("/api/chat/room")
     @ResponseBody
-    public ChatRoom createOrGetChatRoom(@RequestParam String userId1, @RequestParam String userId2) {
-        return chatService.createOrGetChatRoom(userId1, userId2);
+    public ChatRoom createOrGetChatRoom(@RequestParam("myId") String myId,
+                                        @RequestParam("partnerId") String partnerId) {
+        // chat.jsp에서 보낸 myId와 partnerId를 받아서 처리
+        return chatService.createChatRoom(myId, partnerId);
     }
 
     // REST API: 채팅방 메시지 목록 조회
