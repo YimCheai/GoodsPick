@@ -22,7 +22,7 @@
         .chat-img-icon { position: absolute; bottom: 83px; left: 90px; width: 35px; height: 42px; cursor: pointer; }
         .chat-send-icon { position: absolute; bottom: 83px; right: 90px; width: 35px; height: 42px; cursor: pointer; }
         .chat-file-input { display: none; }
-        .chat-messages { position: absolute; top: 181px; left: 47px; right: 47px; height: 520px; overflow-y: auto; display: flex; flex-direction: column; }
+        .chat-messages { position: absolute; top: 170px; left: 47px; right: 47px; height: 490px; overflow-y: auto; display: flex; flex-direction: column; }
         .chat-message-wrapper.my-message { display: flex; align-items: flex-end; justify-content: flex-end; margin-bottom: 10px; gap: 8px; }
         .chat-message.my-message { padding: 12px 16px; background-color: #5271FF; border-radius: 12px; display: inline-block; max-width: 70%; word-wrap: break-word; font-family: 'Pretendard', sans-serif; font-weight: 400; font-size: 15px; color: #FFFFFF; }
         .chat-message-wrapper.other-message { display: flex; align-items: flex-start; margin-bottom: 10px; gap: 8px; }
