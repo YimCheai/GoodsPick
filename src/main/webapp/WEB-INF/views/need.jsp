@@ -1,33 +1,11 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%@ taglib uri="jakarta.tags.functions" prefix="fn" %>
 
 <head>
     <link rel="stylesheet" href="/css/need.css?v=1.1">
     <link rel="stylesheet" href="/css/navbar.css">
-    <style>
-        /* 채팅 버튼 스타일 추가 */
-        .chat-btn-container {
-            margin-top: 10px;
-            text-align: right;
-        }
-        .chat-btn {
-            display: inline-block;
-            padding: 8px 16px;
-            background-color: #5271FF;
-            color: white;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 600;
-            transition: background-color 0.2s;
-            border: none;
-            cursor: pointer;
-        }
-        .chat-btn:hover {
-            background-color: #3c5aff;
-        }
-    </style>
+
 </head>
 <body>
 <%@ include file="components/navbar.jsp" %>
