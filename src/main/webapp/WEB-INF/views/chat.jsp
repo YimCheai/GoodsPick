@@ -264,7 +264,7 @@
             msgWrapper.appendChild(msgDiv);
         } else {
             const profileImg = document.createElement('img');
-            profileImg.src = '/img/chatbox_profile.svg';
+            profileImg.src = '/img/chat-profile.svg';
             profileImg.className = 'other-profile-img';
 
             const contentDiv = document.createElement('div');
